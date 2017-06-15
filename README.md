@@ -2,6 +2,8 @@
 
 > Change the tab title on change its visibility
 
+# ![change-title-onleave](media/example.gif)
+
 #### Install
 
 You can get it on npm/yarn.
