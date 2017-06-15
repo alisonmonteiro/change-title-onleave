@@ -1,6 +1,6 @@
 {
   "name": "change-title-onleave",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "### Usage",
   "main": "index.js",
   "scripts": {
