@@ -3,10 +3,10 @@
 ### Usage
 
 ```js
-changeTitleOnleave({
-	title: 'Hey! 👀',
-	timeout: 3,
-	onHidden: () => {},
-	onVisible: () => {},
+new ChangeTitleOnLeave({
+  title: 'Hey! 👀',
+  timeout: 3,
+  onHidden: () => {},
+  onVisible: () => {}
 })
 ```
