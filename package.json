@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "serve",
-    "build": "browserify index.js -s ChangeTitleOnLeave -t [babelify] -o index.min.js",
+    "build": "browserify index.js -s ChangeTitleOnLeave -t [babelify] -o change-title-onleave.min.js",
     "deploy": "ns -c 'list . -s'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
