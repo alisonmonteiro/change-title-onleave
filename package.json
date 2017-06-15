@@ -1,7 +1,7 @@
 {
   "name": "change-title-onleave",
-  "version": "0.0.3",
-  "description": "### Usage",
+  "version": "0.0.4",
+  "description": "Change the tab title by change its visibility",
   "main": "index.js",
   "scripts": {
     "start": "serve",
@@ -14,7 +14,19 @@
     "type": "git",
     "url": "git+https://github.com/alisonmonteiro/change-title-onleave.git"
   },
-  "author": "",
+  "author": {
+    "name": "Alison",
+    "email": "alisonmonteiro.10@gmail.com",
+    "url": "alisonmonteiro.com.br"
+  },
+  "keywords": [
+    "window",
+    "events",
+    "js",
+    "tabs",
+    "onchange",
+    "onblur"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alisonmonteiro/change-title-onleave/issues"
