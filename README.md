@@ -2,16 +2,32 @@
 
 > Change the tab title on change its visibility
 
-![Example](https://github.com/alisonmonteiro/change-title-onleave/blob/master/images/example.gif)
+#### Install
 
+You can get it on npm/yarn.
 
-### Usage
+```
+npm install change-title-onleave --save
+```
+
+If you're not into package management, [download a ZIP file](https://github.com/alisonmonteiro/change-title-onleave/archive/master.zip).
+
+#### Usage
+
+```html
+<script src="change-title-onleave.min.js"></script>
+```
+
+Now, you need to instantiate it by passing an object as parameter;
 
 ```js
-new ChangeTitleOnLeave({
-  title: 'Hey! 👀',
-  timeout: 3,
-  onHidden: () => {},
-  onVisible: () => {}
-})
+const options = {title: 'Hey! 👀', timeout: 1};
+new ChangeTitleOnLeave(options);
 ```
+
+You can also `require` it:
+
+```js
+const changeTitle = require('change-title-onleave');
+```
+
