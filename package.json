@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "serve",
-    "build": "browserify index.js -s ChangeTitleOnLeave -t [babelify] -o change-title-onleave.min.js",
+    "build": "browserify index.js -s ChangeTitleOnLeave -t [babelify] -o change-title-onleave.js",
+    "build-min": "uglifyjs change-title-onleave.js -o change-title-onleave.min.js",
     "deploy": "ns -c 'list . -s'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,12 +20,13 @@
     "url": "https://github.com/alisonmonteiro/change-title-onleave/issues"
   },
   "homepage": "https://github.com/alisonmonteiro/change-title-onleave#readme",
-  "dependencies": {
+  "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^7.3.0",
-    "browserify": "^14.4.0"
+    "browserify": "^14.4.0",
+    "uglify-js": "^3.0.16"
   }
 }
