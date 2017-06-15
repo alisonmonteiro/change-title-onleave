@@ -9,28 +9,26 @@
 		root.changeTitleOnleave = factory(root, document);
 	}
 })(typeof window === 'undefined' ? this : window, function (window, document) {
-	const documentTitle = document.title;
-
 	function handleVisibility(options) {
+		const {timeout} = options;
+
+		setTimeout(() => updateTitle(options), timeout * 1000);
+	}
+
+	function updateTitle(options) {
 		const state = document.visibilityState;
-		const {timeout, onHidden, title} = options || 0;
+		const title = options.title || document.title;
 
 		if (state === 'hidden') {
-			setTimeout(() => {
-				document.title = 'opa';
-			}, timeout);
+			document.title = title;
 		}
 
 		if (state === 'visible') {
-			setTimeout(() => {
-				document.title = documentTitle;
-			}, timeout);
+			document.title = document.title;
 		}
 	}
 
 	return options => {
-		window.addEventListener('visibilitychange', () => {
-			handleVisibility(options);
-		});
+		window.addEventListener('visibilitychange', () => handleVisibility(options));
 	};
 });
