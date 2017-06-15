@@ -1,34 +1,38 @@
-;(function (root, factory) {
-	'use strict';
-
-	if (typeof module === 'object' && typeof module.exports === 'object') {
-		exports = module.exports = factory(root, document);
-	} else if (typeof define === 'function' && define.amd) {
-		define('changeTitleOnleave', factory);
-	} else {
-		root.changeTitleOnleave = factory(root, document);
-	}
-})(typeof window === 'undefined' ? this : window, function (window, document) {
-	function handleVisibility(options) {
-		const {timeout} = options;
-
-		setTimeout(() => updateTitle(options), timeout * 1000);
+class ChangeTitleOnLeave {
+	constructor(options) {
+		this.resolveAttrs(options);
+		this.listenVisibility();
 	}
 
-	function updateTitle(options) {
+	resolveAttrs(options = {}) {
+		this.title = document.title;
+
+		this.options = options;
+	}
+
+	listenVisibility() {
+		window.addEventListener('visibilitychange', () => this.handleVisibility());
+	}
+
+	handleVisibility() {
+		const {timeout} = this.options;
+
+		setTimeout(() => this.updateTitle(), timeout * 1000);
+	}
+
+	updateTitle() {
 		const state = document.visibilityState;
-		const title = options.title || document.title;
+		const title = this.options.title || document.title;
 
 		if (state === 'hidden') {
 			document.title = title;
 		}
 
 		if (state === 'visible') {
-			document.title = document.title;
+			document.title = this.title;
 		}
 	}
+}
 
-	return options => {
-		window.addEventListener('visibilitychange', () => handleVisibility(options));
-	};
-});
+module.exports = ChangeTitleOnLeave;
+
