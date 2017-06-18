@@ -51,9 +51,17 @@
 			value: function resolveAttrs() {
 				var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
+				this.options = {};
 				this.title = document.title;
 
-				this.options = options;
+				if (!options.title || options.title === '') {
+					throw Error('The `title` is required and must be a string.');
+				}
+
+				this.options.title = options.title;
+				this.options.timeout = typeof options.timeout === 'number' ? options.timeout : 0;
+				this.options.onHidden = typeof options.onHidden === 'function' ? options.onHidden : null;
+				this.options.onVisible = typeof options.onVisible === 'function' ? options.onVisible : null;
 			}
 		}, {
 			key: 'listenVisibility',
@@ -80,15 +88,28 @@
 			key: 'updateTitle',
 			value: function updateTitle() {
 				var state = document.visibilityState;
-				var title = this.options.title || document.title;
+				var _options = this.options,
+				    title = _options.title,
+				    onHidden = _options.onHidden,
+				    onVisible = _options.onVisible;
+
 
 				if (state === 'hidden') {
 					document.title = title;
+					this.useCallback(onHidden);
 				}
 
 				if (state === 'visible') {
 					document.title = this.title;
+					this.useCallback(onVisible);
 				}
+			}
+		}, {
+			key: 'useCallback',
+			value: function useCallback(callable) {
+				if (!callable) return;
+
+				callable();
 			}
 		}]);
 

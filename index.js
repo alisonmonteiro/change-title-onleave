@@ -6,8 +6,16 @@ class ChangeTitleOnLeave {
 
 	resolveAttrs(options = {}) {
 		this.title = document.title;
+		this.options = {};
 
-		this.options = options;
+		if (! options.title || options.title === '') {
+			throw Error('The `title` is required and must be a non-empty string.');
+		}
+
+		this.options.title = options.title;
+		this.options.timeout = typeof options.timeout === 'number' ? options.timeout : 0;
+		this.options.onHidden = typeof options.onHidden === 'function' ? options.onHidden : null;
+		this.options.onVisible = typeof options.onVisible === 'function' ? options.onVisible : null;
 	}
 
 	listenVisibility() {
@@ -22,15 +30,23 @@ class ChangeTitleOnLeave {
 
 	updateTitle() {
 		const state = document.visibilityState;
-		const title = this.options.title || document.title;
+		const {title, onHidden, onVisible} = this.options;
 
 		if (state === 'hidden') {
 			document.title = title;
+			this.useCallback(onHidden);
 		}
 
 		if (state === 'visible') {
 			document.title = this.title;
+			this.useCallback(onVisible);
 		}
+	}
+
+	useCallback(callable) {
+		if (typeof callable !== 'function') return;
+
+		callable();
 	}
 }
 
