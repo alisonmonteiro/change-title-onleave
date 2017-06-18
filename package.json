@@ -1,6 +1,6 @@
 {
   "name": "change-title-onleave",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Change the tab title by change its visibility",
   "main": "index.js",
   "scripts": {
