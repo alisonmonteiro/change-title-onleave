@@ -4,7 +4,7 @@
 
 # ![change-title-onleave](media/example.gif)
 
-#### Install
+### Install
 
 You can get it on npm/yarn.
 
@@ -14,7 +14,7 @@ npm install change-title-onleave --save
 
 If you're not into package management, [download a ZIP file](https://github.com/alisonmonteiro/change-title-onleave/archive/master.zip).
 
-#### Usage
+### Usage
 
 ```html
 <script src="change-title-onleave.min.js"></script>
@@ -33,3 +33,32 @@ You can also `require` it:
 const changeTitle = require('change-title-onleave');
 ```
 
+### API
+
+#### ChangeTitleOnLeave([options])
+
+##### options
+
+###### title
+
+Type: `string`
+
+A string with the title to apply on the tab
+
+###### timeout
+
+Type: `number`
+
+Timeout between the transistion of titles
+
+###### onHidden
+
+Type: `function`
+
+Is called when the user leaves the tab.
+
+###### onVisible
+
+Type: `function`
+
+Is called when the user goes back to the tab.
